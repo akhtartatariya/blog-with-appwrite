@@ -16,7 +16,7 @@ class AuthService {
             if(!account){
                 throw new Error('Account not created')
             }
-            this.login({email,password})
+            return account
         } catch (error) {
             console.log("signUp error",error)
             throw error;
@@ -28,7 +28,6 @@ class AuthService {
             return await this.account.createEmailPasswordSession(email,password)
         } catch (error) {
             console.log("login error",error)
-            throw error;
         }
         return null;
     }
@@ -49,8 +48,7 @@ class AuthService {
         try {
             return await this.account.get()
         } catch (error) {
-            console.log("getCurrentUser error",error)
-            throw error
+            // console.log("getCurrentUser error",error)
         }
         return null
     }
